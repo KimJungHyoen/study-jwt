@@ -52,7 +52,7 @@ public class TokenProvider {
                 .compact();
     }
 
-    public String createRefreshToken(String userId) {
+    public String createRefreshToken(Authentication authentication) {
 
         // 토큰의 expire 시간을 설정
         Date now = new Date();
@@ -61,7 +61,7 @@ public class TokenProvider {
         // Refresh Token 생성
         return Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                .setSubject(userId)
+                .setSubject(authentication.getName())
                 .setIssuedAt(now)
                 .setExpiration(expiration)
                 .signWith(key, SignatureAlgorithm.HS512)
@@ -101,10 +101,6 @@ public class TokenProvider {
         }
 
         return null;
-    }
-
-    public String getSignature(String token) {
-        return token.split("\\.")[2];
     }
 
     // 토큰의 유효성 검증을 수행
