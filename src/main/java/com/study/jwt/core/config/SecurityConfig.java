@@ -33,8 +33,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(PathRequest.toH2Console()).permitAll()
-                                .requestMatchers(
-                                        HttpMethod.POST, "/api/user/signup"
+                                .requestMatchers(HttpMethod.POST,
+                                        "/api/user/signup",
+                                        "/api/login"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 );

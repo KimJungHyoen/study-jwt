@@ -23,3 +23,8 @@ spring:
 
 logging.level:
   org.hibernate.SQL: debug
+
+jwt:
+  access-due-hour: 1 # access token ?? ??
+  refresh-due-day: 14 # refresh token ?? ?
+  secret: ZjU4NjM0NDQzODVjNTU5MjU3YjhjN2MxYTY5NWMzNWYxOWE4YTlhYTc4YjMyMjM3YTZjZWJlN2I4NjUzMTAxY2UzZWU2NTU2ZGYyMmNhOWZiZDQ4ODgyMjE0MTQ0MDIyYTFlMGE5Njg2MmE0MjY3YThkMGEwYzJkOTk5MDJkMjU=
