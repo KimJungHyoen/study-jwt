@@ -24,7 +24,8 @@ public class SecurityConfig {
                 )
 
                 .sessionManagement(sessionManagement ->
-                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
 
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
