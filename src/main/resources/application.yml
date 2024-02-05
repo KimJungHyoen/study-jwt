@@ -24,6 +24,10 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
 
+cors:
+  allowed-origin:
+    http://localhost:8080
+
 jwt:
   access-due-hour: 1 # access token ?? ??
   refresh-due-day: 14 # refresh token ?? ?

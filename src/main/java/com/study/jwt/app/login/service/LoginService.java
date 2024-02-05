@@ -24,7 +24,7 @@ public class LoginService {
         UsernamePasswordAuthenticationToken authenticationToken =
                 UsernamePasswordAuthenticationToken.unauthenticated(loginReqDto.getUserId(), loginReqDto.getPassword());
 
-        Authentication authentication = authenticationManager.authenticate(authenticationToken);
+        final Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
         TokenDto tokenDto = createTokenDto(authentication);
 
