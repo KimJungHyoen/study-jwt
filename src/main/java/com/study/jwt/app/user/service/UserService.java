@@ -1,7 +1,6 @@
 package com.study.jwt.app.user.service;
 
-import com.study.jwt.app.authority.constants.Authority;
-import com.study.jwt.app.user.dto.UserDto;
+import com.study.jwt.app.user.dto.SignupDto;
 import com.study.jwt.app.user.entity.User;
 import com.study.jwt.app.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,23 +17,16 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder;
 
-    public User signup(UserDto userDto) {
+    public User signup(SignupDto signupDto) {
 
-        if (userRepository.findOneByUserId(userDto.getUserId()).isPresent()) {
+        if (userRepository.findOneByUserId(signupDto.getUserId()).isPresent()) {
             throw new RuntimeException();
         }
 
-        String encPwd = passwordEncoder.encode(userDto.getPassword());
+        String encPwd = passwordEncoder.encode(signupDto.getPassword());
+        signupDto.setPassword(encPwd);
 
-        User user = User.builder()
-                .userId(userDto.getUserId())
-                .password(encPwd)
-                .nickname(userDto.getNickname())
-                .authority(Authority.ROLE_USER)
-                .activated(true)
-                .build();
-
-        return userRepository.save(user);
+        return userRepository.save(signupDto.toEntity());
     }
 
 }

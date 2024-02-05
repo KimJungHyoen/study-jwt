@@ -1,6 +1,6 @@
 package com.study.jwt.app.user.controller;
 
-import com.study.jwt.app.user.dto.UserDto;
+import com.study.jwt.app.user.dto.SignupDto;
 import com.study.jwt.app.user.entity.User;
 import com.study.jwt.app.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public User signup(@Validated @RequestBody UserDto userDto) {
-        return userService.signup(userDto);
+    public User signup(@Validated @RequestBody SignupDto signupDto) {
+        return userService.signup(signupDto);
     }
 }
